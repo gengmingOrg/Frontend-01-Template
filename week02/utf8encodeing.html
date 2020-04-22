@@ -1,0 +1,31 @@
+<script type="text/javascript">
+  // 字节流转 String
+  function UTF8_Decoding(bytes) {
+    var str = "",
+        bytesIndex = 0,
+        bytesEnd = bytes.length - 1;
+
+    while (bytesIndex  < bytesEnd) {
+        str += String.fromCharCode(bytes[bytesIndex]);
+        bytesIndex ++
+    }
+
+    return str;
+};
+  // 字符串转字节流 
+function UTF8_Encoding(str) {
+   let length = str.length,
+        strIndex = 0,
+        strEnd = length - 1,
+        bytes = new Uint8Array(length),
+        index = 0;
+
+    while (strIndex < strEnd) {
+        bytes[index] = str.charCodeAt(strIndex) & 0xFF;
+        index += 1;
+        strIndex++
+    }
+
+    return bytes;
+}
+</script>
