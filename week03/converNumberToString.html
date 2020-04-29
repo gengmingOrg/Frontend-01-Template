@@ -1,0 +1,26 @@
+<script type="text/javascript">
+  function converNumberToString(num, x = 10){
+
+    var inter = Math.floor(num)
+    var fac = num - inter
+    var string = ''
+    while (inter > 0) {
+      string =  inter%10 + string
+      inter = parseInt(inter/10)
+    }
+
+    if(fac > 0){
+      string += '.'
+    }
+
+    while (fac > 0) {
+      var fac1 = fac * 10 - fac
+      string += fac1
+      fac -= fac1
+    }
+    console.log(string);
+    return string
+  }
+  var a = 10.0123
+  converNumberToString(a)
+</script>

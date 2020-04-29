@@ -1,0 +1,26 @@
+<script type="text/javascript">
+  function converStringToNumber(s, x = 10){
+
+    var number = 0
+      for (var i = 0; i < s.length ; i++) {
+        var sU = s[i].toUpperCase().codePointAt(0)
+        var cha = 0
+        // 64 是   codePointAt 值
+        if(sU > 64){
+          cha = sU - 55
+        }else{
+          cha = sU - 48 // 是 0 的codePointAt 值
+        }
+        // 判断超了就不计算了
+        if(cha < x){
+          number = number * x
+          number += cha
+        }else {
+          return number
+        }
+      }
+      console.log(number);
+      return number
+  }
+  converStringToNumber('1a',16)
+</script>
