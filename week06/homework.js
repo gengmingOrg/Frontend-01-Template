@@ -63,5 +63,5 @@ function end(c){
 
 // var str = 'ababababx'
 // var str = 'abababx'
-var str = 'abababx'
+var str = 'ababaabx'
 console.log(match(str))

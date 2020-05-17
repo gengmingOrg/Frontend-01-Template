@@ -1,5 +1,5 @@
 const net = require('net');
-
+const parser = require('./parser')
 class Request {
   constructor(options) {
     this.method = options.method || 'GET'
@@ -34,7 +34,7 @@ class Request {
           host: this.host,
           port: this.port
         }, () =>  { // 'connect' listener.
-            console.log('connected to server!');
+            // console.log('connected to server!');
             connection.write(this.toString())
         });
 
@@ -42,18 +42,18 @@ class Request {
           parser.receive(data.toString())
 
           if(parser.isFinished){
-            console.log(parser.response,'parser.response');
+            // console.log(parser.response,'parser.response');
             resolve(parser.response);
           }
           // resolve(data.toString());
           connection.end();
         });
         connection.on('err', (err) => {
-          console.log('disconnected from server');
+          // console.log('disconnected from server');
           resolve(err);
         });
         connection.on('end', () => {
-          console.log('disconnected from server');
+          // console.log('disconnected from server');
         });
       }
     })
@@ -217,6 +217,8 @@ void async function(){
     }
   });
   let response = await request.send()
+
+  let dom = parser.parserHtml(response.body)
 }()
 
 
